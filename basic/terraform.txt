@@ -1,0 +1,6 @@
+
+# fill in details and change file to terraform.tfvars
+access_key =
+secret_key =
+ami        =
+
