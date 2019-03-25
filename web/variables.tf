@@ -6,3 +6,5 @@ variable "region" {
 }
 variable "ami" {}
 variable "key_name" {}
+variable "key_file" {}
+variable "user" {}
