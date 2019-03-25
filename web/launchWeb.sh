@@ -12,10 +12,3 @@ printf 'yes' | terraform apply
 
 chmod 600 ~/.ssh/$key_file
 
-
-echo wait for ec2 to stabilize
-sleep 10s
-echo start ssh
-
-# ssh into container
-source login.sh

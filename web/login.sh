@@ -1,6 +1,5 @@
 #!/bin/bash
 
-
 # source to get variables
 source launchWeb.config
 
