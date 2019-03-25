@@ -13,6 +13,10 @@ resource "aws_instance" "web" {
     source = "createSite.sh"
     destination = "/tmp/createSite.sh"
   }
+  provisioner "file" {
+    source = "example.com"
+    destination = "~/example.com"
+  }
   provisioner "remote-exec" {
     inline = [
       "chmod +x /tmp/createSite.sh",
