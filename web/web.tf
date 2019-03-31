@@ -5,10 +5,14 @@ provider "aws" {
   region     = "${var.region}"
 }
 
+
 resource "aws_instance" "web" {
   ami           = "${var.ami}"
   instance_type = "t2.micro"
   key_name      = "${var.key_name}"
+
+  security_groups = ["${aws_security_group.web_server.name}"]
+
   provisioner "file" {
     source = "createSite.sh"
     destination = "/tmp/createSite.sh"
