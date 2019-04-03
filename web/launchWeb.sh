@@ -12,3 +12,4 @@ printf 'yes' | terraform apply
 
 chmod 600 ~/.ssh/$key_file
 
+source runSite.sh
