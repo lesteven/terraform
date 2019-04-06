@@ -4,3 +4,4 @@ variable "external_id" {}
 variable "volume_id" {}
 variable "region" {}
 variable "ami" {}
+variable "cred_file" {}
