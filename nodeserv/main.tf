@@ -13,10 +13,25 @@ data "aws_security_group" "web_server" {
 
 
 # create new instances from ami
-resource "aws_instance" "webA" {
+resource "aws_instance" "node_serv" {
   ami = "${lookup(var.ami, var.region)}"
   instance_type = "t2.micro"
   security_groups = ["${data.aws_security_group.web_server.name}"]
   key_name = "${var.key_name}"
   availability_zone = "${var.zones[0]}"
+  provisioner "file" {
+    source = "./scripts/createSite.sh"
+    destination = "/tmp/createSite.sh"
+  }
+  provisioner "remote-exec" {
+    inline = [
+      "chmod +x /tmp/createSite.sh",
+      "sudo /tmp/createSite.sh"
+    ]
+  }
+  connection {
+    type = "ssh"
+    user = "${var.user}"
+    private_key = "${file("~/.ssh/${var.key_file}")}"
+  }
 }
