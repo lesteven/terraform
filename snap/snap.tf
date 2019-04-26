@@ -38,7 +38,7 @@ data "aws_security_group" "web_server" {
   }
 }
 
-# create instance w/ snapshot
+# create instance w/ ami
 resource "aws_instance" "web2" {
   ami = "${aws_ami.web_ami.id}"
   instance_type = "t2.micro"
