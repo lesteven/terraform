@@ -19,14 +19,20 @@ resource "aws_instance" "node_serv" {
   security_groups = ["${data.aws_security_group.web_server.name}"]
   key_name = "${var.key_name}"
   availability_zone = "${var.zones[0]}"
+
+  provisioner "file" {
+    source = "./nodeServer"
+    destination = "./nodeServer"
+  }
+
   provisioner "file" {
     source = "./scripts/createSite.sh"
     destination = "/tmp/createSite.sh"
   }
+
   provisioner "remote-exec" {
     inline = [
       "chmod +x /tmp/createSite.sh",
-      "sudo /tmp/createSite.sh"
     ]
   }
   connection {
