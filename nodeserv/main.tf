@@ -11,6 +11,12 @@ data "aws_security_group" "web_server" {
   }
 }
 
+# output
+
+output "ip" {
+  value = "${aws_instance.node_serv.public_ip}"
+  description = "Public ip address of instance"
+}
 
 # create new instances from ami
 resource "aws_instance" "node_serv" {
