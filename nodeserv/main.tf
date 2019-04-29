@@ -26,19 +26,17 @@ resource "aws_instance" "node_serv" {
   key_name = "${var.key_name}"
   availability_zone = "${var.zones[0]}"
 
-  provisioner "file" {
-    source = "./nodeServer"
-    destination = "./nodeServer"
+  provisioner "local-exec" {
+    command = "echo ${aws_instance.node_serv.public_ip} > ./scripts/prov/ip.txt"
   }
-
   provisioner "file" {
-    source = "./scripts/createSite.sh"
-    destination = "/tmp/createSite.sh"
+    source = "./scripts/prov"
+    destination = "./"
   }
-
   provisioner "remote-exec" {
     inline = [
-      "chmod +x /tmp/createSite.sh",
+      "chmod +x ./prov/createSite.sh",
+      "sudo ./prov/createSite.sh"
     ]
   }
   connection {
