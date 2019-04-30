@@ -36,7 +36,7 @@ resource "aws_instance" "node_serv" {
   provisioner "remote-exec" {
     inline = [
       "chmod +x ./prov/createSite.sh",
-      "sudo ./prov/createSite.sh"
+      "sudo ./prov/createSite.sh",
     ]
   }
   connection {
