@@ -13,3 +13,6 @@ printf yes | terraform apply
 
 # clean up
 rm -rf ./scripts/prov/nodeServer
+
+public_ip=$(terraform output ip)
+firefox $public_ip
