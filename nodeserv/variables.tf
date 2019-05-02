@@ -17,6 +17,7 @@ variable "ami" {
 }
 variable "key_name" {}
 variable "key_file" {}
+variable "dep_key" {}
 variable "user" {
   default = "ubuntu"
 }

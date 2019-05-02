@@ -20,7 +20,7 @@ sudo ln -s /etc/nginx/sites-available/example.com /etc/nginx/sites-enabled/
 sudo sed -i 's/# server_names/server_names/' /etc/nginx/nginx.conf
 sudo systemctl restart nginx
 
-cd ~/prov/nodeServer
+cd ~/nodeServer
 npm i
 sudo npm i pm2 -g
 pm2 start ./src/index.js
