@@ -1,6 +1,12 @@
 
 provider "aws" {
-  region = "${var.region}"
+  region = "${var.region[0]}"
+  shared_credentials_file = "${var.cred_file}"
+}
+
+provider "aws" {
+  alias = "${var.region[1]}"
+  region = "${var.region[1]}"
   shared_credentials_file = "${var.cred_file}"
 }
 
@@ -39,7 +45,7 @@ resource "aws_instance" "webB" {
   availability_zone = "${var.zones[1]}"
 }
 
-#output
+# output for instance public ips
 output "webA_ip" {
   value = "${aws_instance.webA.public_ip}"
   description = "Public ip for webA"
