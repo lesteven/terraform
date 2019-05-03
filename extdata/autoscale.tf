@@ -1,4 +1,5 @@
 
+# no alias, b/c need default
 provider "aws" {
   region = "${var.region[0]}"
   shared_credentials_file = "${var.cred_file}"

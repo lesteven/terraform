@@ -15,6 +15,7 @@ resource "aws_dynamodb_table" "tab0" {
 
 resource "aws_dynamodb_table" "tab1" {
   provider = "aws.${var.region[1]}"
+
   hash_key = "quote"
   name = "myTable"
   stream_enabled = true
@@ -29,7 +30,7 @@ resource "aws_dynamodb_table" "tab1" {
 }
 
 resource "aws_dynamodb_global_table" "myTable" {
-  depends_on = ["aws_dynamodb_table.tab0","aws_dynamodb_table.tab1"]
+  depends_on = ["aws_dynamodb_table.tab0", "aws_dynamodb_table.tab1"]
 
   name = "myTable"
 
