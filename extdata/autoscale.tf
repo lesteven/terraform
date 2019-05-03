@@ -39,6 +39,16 @@ resource "aws_instance" "webB" {
   availability_zone = "${var.zones[1]}"
 }
 
+#output
+output "webA_ip" {
+  value = "${aws_instance.webA.public_ip}"
+  description = "Public ip for webA"
+}
+output "webB_ip" {
+  value = "${aws_instance.webB.public_ip}"
+  description = "Public ip for webB"
+}
+
 #create elastic load balancer w/ two availability zones
 resource "aws_elb" "autoscale" {
   name = "autoscale"
