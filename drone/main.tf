@@ -11,6 +11,18 @@ data "aws_security_group" "web_server" {
   }
 }
 
+# elastic ip
+data "aws_eip" "elip" {
+    tags = {
+      name = "droneServer"
+    }
+}
+
+resource "aws_eip_association" "drone_eip" {
+  instance_id = "${aws_instance.drone.id}"
+  allocation_id = "${data.aws_eip.elip.id}" 
+}
+
 # output
 
 output "ip" {
