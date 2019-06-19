@@ -27,7 +27,7 @@ resource "aws_instance" "node_serv" {
   availability_zone = "${var.zones[0]}"
 
   provisioner "local-exec" {
-    command = "echo ${aws_instance.node_serv.public_ip} > ./scripts/prov/ip.txt",
+    command = "echo ${aws_instance.node_serv.public_ip} > ./scripts/prov/ip.txt"
   }
   provisioner "file" {
     source = "./scripts/prov"
@@ -50,6 +50,7 @@ resource "aws_instance" "node_serv" {
   }
   connection {
     type = "ssh"
+    host = self.public_ip
     user = "${var.user}"
     private_key = "${file("~/.ssh/${var.key_file}")}"
   }
