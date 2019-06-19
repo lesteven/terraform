@@ -26,8 +26,23 @@ resource "aws_instance" "drone" {
   key_name = "${var.key_name}"
   availability_zone = "${var.zones[0]}"
 
+  provisioner "local-exec" {
+    command = "echo ${aws_instance.drone.public_ip} > ./scripts/prov/ip.txt"
+  }
+  provisioner "file" {
+    source = "./scripts/prov"
+    destination = "./"
+  }
+  provisioner "remote-exec" {
+    inline = [
+      "chmod +x ./prov/createSite.sh",
+      "sudo ./prov/createSite.sh",
+    ]
+  }
+
   connection {
     type = "ssh"
+    host = self.public_ip
     user = "${var.user}"
     private_key = "${file("~/.ssh/${var.key_file}")}"
   }
