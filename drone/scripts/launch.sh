@@ -9,5 +9,5 @@ cd ..
 terraform init
 printf yes | terraform apply
 
-public_ip=$(terraform output ip)
+public_ip=$(terraform output eip)
 firefox $public_ip

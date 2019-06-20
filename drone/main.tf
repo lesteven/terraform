@@ -29,6 +29,10 @@ output "ip" {
   value = "${aws_instance.drone.public_ip}"
   description = "Public ip address of instance"
 }
+output "eip" {
+  value = "${data.aws_eip.elip.public_ip}"
+  description = "Elastic ip address of instance"
+}
 
 # create new instances from ami
 resource "aws_instance" "drone" {
@@ -38,9 +42,6 @@ resource "aws_instance" "drone" {
   key_name = "${var.key_name}"
   availability_zone = "${var.zones[0]}"
 
-  provisioner "local-exec" {
-    command = "echo ${aws_instance.drone.public_ip} > ./scripts/prov/ip.txt"
-  }
   provisioner "file" {
     source = "./scripts/prov"
     destination = "./"
