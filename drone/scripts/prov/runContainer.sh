@@ -14,7 +14,6 @@ sudo docker container run \
     --env=DRONE_SERVER_PROTO="$server_proto" \
     --env=DRONE_TLS_AUTOCERT=true \
     --publish=3000:80 \
-    --publish=443:443 \
     --restart=always \
     --detach=true \
     --name=drone \

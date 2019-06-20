@@ -52,6 +52,7 @@ resource "aws_instance" "drone" {
       "sudo ./prov/createSite.sh",
       "chmod +x ./prov/runContainer.sh",
       "sudo ./prov/runContainer.sh",
+      "chmod +x ./prov/runBot.sh",
     ]
   }
 

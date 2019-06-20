@@ -6,6 +6,12 @@ sudo apt-get install -y nginx
 sudo add-apt-repository ppa:certbot/certbot -y
 sudo apt install python-certbot-nginx -y
 
+# ufw
+echo y | sudo ufw enable 
+sudo ufw allow 80
+sudo ufw allow 443
+sudo ufw allow 22
+
 # download docker
 sudo apt-get install \
     apt-transport-https \
@@ -36,13 +42,5 @@ sudo systemctl restart nginx
 
 # install drone and run
 sudo docker pull drone/drone:1
-#sudo ./runContainer.sh
 
-# certbot for https
-source drone.config
-#sudo certbot --agree-tos -m "$email" --no-eff-email \
-#    --nginx -d stevenle.xyz -d www.stevenle.xyz 
-#sudo certbot renew --dry-run
 
-# cleanup
-# rm drone.config
