@@ -50,6 +50,8 @@ resource "aws_instance" "drone" {
     inline = [
       "chmod +x ./prov/createSite.sh",
       "sudo ./prov/createSite.sh",
+      "chmod +x ./prov/runContainer.sh",
+      "sudo ./prov/runContainer.sh",
     ]
   }
 

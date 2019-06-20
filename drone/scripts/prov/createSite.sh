@@ -36,13 +36,13 @@ sudo systemctl restart nginx
 
 # install drone and run
 sudo docker pull drone/drone:1
-sudo ./runContainer.sh
+#sudo ./runContainer.sh
 
 # certbot for https
 source drone.config
-sudo certbot --agree-tos -m "$email" --no-eff-email \
-    --nginx -d stevenle.xyz -d www.stevenle.xyz 
+#sudo certbot --agree-tos -m "$email" --no-eff-email \
+#    --nginx -d stevenle.xyz -d www.stevenle.xyz 
 #sudo certbot renew --dry-run
 
 # cleanup
-rm drone.config
+# rm drone.config
