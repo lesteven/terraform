@@ -10,7 +10,7 @@ cd "$(dirname "$0")/$dir"
 source ./scripts/launchWeb.config
 
 # get public_ip 
-public_ip=$(terraform output ip)
+public_ip=$(terraform output eip)
 
 
 ssh -tt -oStrictHostKeyChecking=no -i ~/.ssh/$key_file ubuntu@$public_ip
