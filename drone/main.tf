@@ -42,6 +42,10 @@ resource "aws_instance" "drone" {
   key_name = "${var.key_name}"
   availability_zone = "${var.zones[0]}"
 
+  tags = {
+    name = "drone"
+  }
+
   provisioner "file" {
     source = "./scripts/prov"
     destination = "./"
