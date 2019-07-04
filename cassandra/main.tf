@@ -3,6 +3,13 @@ provider "aws" {
   shared_credentials_file = "${var.cred_file}"
 }
 
+# get security group
+data "aws_security_group" "cass_group" {
+  filter {
+    name = "group-name"
+    values = ["${var.security_name}"]
+  }
+}
 # elastic ip
 data "aws_eip" "elip" {
     tags = {
@@ -30,6 +37,7 @@ output "eip" {
 resource "aws_instance" "cassandra" {
   ami = "${lookup(var.ami, var.region)}"
   instance_type = "t2.micro"
+  security_groups = ["${data.aws_security_group.cass_group.name}"]
   key_name = "${var.key_name}"
   availability_zone = "${var.zones[0]}"
 

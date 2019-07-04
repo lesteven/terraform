@@ -5,7 +5,7 @@ variable "cred_file" {
   default = "~/.aws/credentials"
 }
 variable "security_name" {
-  default = "cassandra"
+  default = "web_server"
 }
 variable "zones" {
   default = ["us-west-1a","us-west-1b"]

@@ -11,3 +11,4 @@ sudo apt-get install cassandra -y
 
 sudo service cassandra start
 
+# sed -i 's/listen_address: localhost/listen_address: <>'
