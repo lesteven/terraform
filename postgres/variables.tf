@@ -4,9 +4,6 @@ variable "region" {
 variable "cred_file" {
   default = "~/.aws/credentials"
 }
-variable "security_name" {
-  default = "web_server"
-}
 variable "zones" {
   default = ["us-west-1a","us-west-1b"]
 }
@@ -24,3 +21,4 @@ variable "user" {
 
 variable "username" {}
 variable "password" {}
+variable "security_name" {}
