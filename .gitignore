@@ -2,6 +2,7 @@
 *.config
 ip.txt
 githubKey
+config.py
 
 # Local .terraform directories
 **/.terraform/*

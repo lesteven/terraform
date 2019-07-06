@@ -17,4 +17,5 @@ password=$(grep password terraform.tfvars | awk '{print $3}' | sed 's/"//g')
 uri="postgresql://"$username":"$password"@"$address":"$port"/"$name"\
 ?sslmode=verify-full&sslrootcert=cert.pem"
 
+
 psql "$uri"
