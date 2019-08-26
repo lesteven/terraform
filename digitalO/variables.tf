@@ -1,3 +1,4 @@
 
-variable "do_token" {
-}
+variable "do_token" {}
+variable "ssh_pubkey" {}
+
