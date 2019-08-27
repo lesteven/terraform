@@ -8,14 +8,14 @@ change dir into digitalO
 
 run the init script to generate the terraform.tfvars file
 
-modify the file and 
-    - insert your own digital ocean token 
-    - ssh private key filename
-    - ssh public key filename
-    - eg.
-        - do_token = "xyzabc123"
-        - ssh_pubkey = "example.pub"
-        - private_key = "example"
+modify the file <br/>
+* insert your own digital ocean token  
+* ssh private key filename  
+* ssh public key filename  
+* eg.  
+	* do_token = "xyzabc123"  
+    * ssh_pubkey = "example.pub"  
+    * private_key = "example"  
 
 ## Instructions on how to create an access token
 https://www.digitalocean.com/docs/api/create-personal-access-token/
